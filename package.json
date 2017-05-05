@@ -1,0 +1,22 @@
+{
+  "name": "MEAN2",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "prepare": "node -e \"console.log(child_process.execSync(os.type()==='Windows_NT'?'npm.cmd install':'npm install', {cwd: 'client'}).toString('utf8'))\"",
+    "build": "node -e \"console.log(child_process.execSync(os.type()==='Windows_NT'?'ng.cmd build --watch false --output-path dist':'ng build --watch false --output-path dist', {cwd: 'client'}).toString('utf8'))\"",
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "@angular/cli": "^1.0.2",
+    "body-parser": "~1.15.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "ejs": "~2.5.2",
+    "express": "~4.14.0",
+    "mongoose": "^4.6.6",
+    "morgan": "~1.7.0",
+    "serve-favicon": "~2.3.0",
+    "socket.io": "^1.7.3"
+  }
+}

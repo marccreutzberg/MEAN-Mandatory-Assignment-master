@@ -1,0 +1,93 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <h1>
+                {{title}}
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div *ngIf="!isLoggedIn && showLogin">
+                <form (ngSubmit)="submitLogin()">
+                    <div class="form-group">
+                        <h3>Login here</h3>
+                        <label for="user">Username</label>
+                        <input type="text" class="form-control" id="user" required [(ngModel)]="user.userName" name="userName">
+                    </div>
+                    <button type="submit" class="btn btn-default">Login</button>
+                </form>
+                <a href="#" (click)="register()">Register</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div *ngIf="showRegister">
+                <form (ngSubmit)="submitRegister()">
+                    <div class="form-group">
+                        <h3>Register you here</h3>
+                        <label for="user">Username</label>
+                        <input type="text" class="form-control" id="newUser" required [(ngModel)]="user.userName" name="userName">
+                    </div>
+                    <button type="submit" class="btn btn-default">Register</button>
+                </form>
+                <a href="#" (click)="login()">Already got an user?</a>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div *ngIf="isLoggedIn">
+                <button (click)="submitLogout()">Log out</button>
+                <h2>Chat rooms</h2>
+                <form (ngSubmit)="createRoom()">
+                    <div class="form-group">
+                        <label for="roomName">Create A New Room</label>
+                        <input type="text" class="form-control" id="roomName" required [(ngModel)]="roomName" name="roomName">
+                    </div>
+                    <button type="submit" class="btn btn-default">Create New ROom</button>
+                </form>
+
+                <h2>Join a chat room</h2>
+                <div class="rooms">
+                    <ul>
+                        <li *ngFor="let chatRoom of chatRooms" (click)="chooseRoom(chatRoom)">
+                            {{chatRoom.name}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div *ngIf="roomIsSelected">
+                <h2>Chat messages</h2>
+                <div class="messages">
+                    <ul>
+                        <li *ngFor="let chatMessage of chatMessages">
+                            <strong> {{chatMessage.user.userName}}</strong>
+                            <em>{{chatMessage.sendTime}}</em>
+                            <p>{{chatMessage.message}}</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <form (ngSubmit)="submitMessage()">
+                            <input type="text" class="form-control" [(ngModel)]="chatMessage" id="chatMessage" name="chatMessage">
+
+                            <button type="submit" class="btn btn-default">Send</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+.rooms ul{
+    list-style-type: none; padding: 0; margin: 0;
+}
+
+.rooms ul li{
+    margin: 5px 0;
+    cursor: pointer;
+    color: blue;
+}
+
+.messages ul{
+    list-style-type: none; padding: 0; margin: 0;
+}
+
+
+.messages ul li{
+    margin: 5px 0;
+}
+
+.messages em{
+    font-size: 8px;
+    font-style: italic;
+}
